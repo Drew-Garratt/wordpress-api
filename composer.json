@@ -30,6 +30,21 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wp-premium/advanced-custom-fields-pro",
+        "version": "5.6.9",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/wp-premium/advanced-custom-fields-pro/archive/5.6.9.zip"
+        },
+        "require" : {
+          "composer/installers": "^1.4"
+        }
+      }
     }
   ],
   "require": {
@@ -37,8 +52,15 @@
     "composer/installers": "^1.4",
     "vlucas/phpdotenv": "^2.0.1",
     "johnpbloch/wordpress": "4.9.4",
+    "wpackagist-plugin/acf-to-rest-api": "3.1.0",
+    "wpackagist-plugin/custom-post-type-ui": "1.5.7",
+    "wpackagist-plugin/wp-rest-api-v2-menus": "0.3",
+    "wpackagist-plugin/simple-page-ordering": "2.3",
+    "wpackagist-plugin/post-duplicator": "2.4",
+    "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "1.2.4",
     "oscarotero/env": "^1.1.0",
-    "roots/wp-password-bcrypt": "1.0.0"
+    "roots/wp-password-bcrypt": "1.0.0",
+    "wp-premium/advanced-custom-fields-pro": "5.6.9"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.0.2"
