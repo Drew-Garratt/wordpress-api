@@ -33,8 +33,11 @@ add_filter( 'preview_post_link', 'set_headless_preview_link' );
 function change_permalinks($permalink, $post) {
 	return str_replace(env('WP_HOME'), env('FE_ORIGIN'), $permalink);
 }
+function change_news_permalinks($permalink, $post) {
+	return str_replace(env('WP_HOME'), env('FE_ORIGIN') . '/news', $permalink);
+}
 
-add_filter( 'post_link', 'change_permalinks', 10, 3);
+add_filter( 'post_link', 'change_news_permalinks', 10, 3);
 add_filter( 'page_link', 'change_permalinks', 10, 3);
 add_filter( 'post_type_link', 'change_permalinks', 10, 3);
 add_filter( 'category_link', 'change_permalinks', 11, 3);

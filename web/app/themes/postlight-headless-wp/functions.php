@@ -1,5 +1,8 @@
 <?php
 
+// Theme activation
+require_once( 'inc/theme-activation.php' );
+
 // Frontend origin
 require_once( 'inc/frontend-origin.php' );
 
