@@ -30,16 +30,22 @@ add_filter( 'preview_post_link', 'set_headless_preview_link' );
 /**
  * Customize the link button in the WordPress admin to point to the headless client.
  */
-function changePermalinks($permalink, $post) {
+function change_permalinks($permalink, $post) {
 	return str_replace(env('WP_HOME'), env('FE_ORIGIN'), $permalink);
 }
 
-add_filter( 'post_link', 'changePermalinks', 10, 3);
-add_filter( 'page_link', 'changePermalinks', 10, 3);
-add_filter( 'post_type_link', 'changePermalinks', 10, 3);
-add_filter( 'category_link', 'changePermalinks', 11, 3);
-add_filter( 'tag_link', 'changePermalinks', 10, 3);
-add_filter( 'author_link', 'changePermalinks', 11, 3);
-add_filter( 'day_link', 'changePermalinks', 11, 3);
-add_filter( 'month_link', 'changePermalinks', 11, 3);
-add_filter( 'year_link', 'changePermalinks', 11, 3);
+add_filter( 'post_link', 'change_permalinks', 10, 3);
+add_filter( 'page_link', 'change_permalinks', 10, 3);
+add_filter( 'post_type_link', 'change_permalinks', 10, 3);
+add_filter( 'category_link', 'change_permalinks', 11, 3);
+add_filter( 'tag_link', 'change_permalinks', 10, 3);
+add_filter( 'author_link', 'change_permalinks', 11, 3);
+add_filter( 'day_link', 'change_permalinks', 11, 3);
+add_filter( 'month_link', 'change_permalinks', 11, 3);
+add_filter( 'year_link', 'change_permalinks', 11, 3);
+
+function limit_page_depth($a) {
+  $a['depth'] = 1;
+  return $a;
+}
+add_action('page_attributes_dropdown_pages_args','limit_page_depth');
