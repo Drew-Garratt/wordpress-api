@@ -24,11 +24,18 @@ function set_headless_preview_link($link)
     $post_id = get_the_ID();
     $revisions = wp_get_post_revisions($post_id);
     $latest_revision = array_shift($revisions);
-    return get_frontend_origin() . '/'
-        . 'news/_preview/?id='
-        . $post_id . '&revision='
-        . $latest_revision->ID . '&token='
-        . wp_create_nonce('wp_rest');
+    if ($latest_revision) {
+        return get_frontend_origin() . '/'
+            . 'news/_preview/?id='
+            . $post_id . '&revision='
+            . $latest_revision->ID . '&token='
+            . wp_create_nonce('wp_rest');
+    } else {
+        return get_frontend_origin() . '/'
+            . 'news/_preview/?id='
+            . $post_id .'&token='
+            . wp_create_nonce('wp_rest');
+    }
 }
 
 add_filter('preview_post_link', 'set_headless_preview_link');
